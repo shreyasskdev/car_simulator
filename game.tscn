@@ -1,0 +1,231 @@
+[gd_scene load_steps=23 format=3 uid="uid://be1yjig7jeowq"]
+
+[ext_resource type="Texture2D" uid="uid://xdrxsl2wyjly" path="res://assets/icon.svg" id="1_66ytm"]
+[ext_resource type="PackedScene" uid="uid://bl3lwv1j1b4a3" path="res://assets/R35/car_r35.tscn" id="2_xasnk"]
+[ext_resource type="Texture2D" uid="uid://kvteofy2vfxx" path="res://assets/Textures/Green.png" id="3_jmcv3"]
+[ext_resource type="Texture2D" uid="uid://bkddih5rtvwl4" path="res://assets/Textures/Orange.png" id="4_5h61w"]
+[ext_resource type="Shader" path="res://sky.gdshader" id="5_wurup"]
+[ext_resource type="Texture2D" uid="uid://dwgqkfnltwqw" path="res://assets/Textures/Sky.png" id="6_n70fe"]
+[ext_resource type="Script" path="res://Canvas2D.gd" id="7_103o6"]
+[ext_resource type="Shader" path="res://custom_post_processing.gdshader" id="8_3jipn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3mqt"]
+albedo_color = Color(0.556953, 0.556953, 0.556953, 1)
+albedo_texture = ExtResource("1_66ytm")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vrtwc"]
+material = SubResource("StandardMaterial3D_y3mqt")
+size = Vector3(100, 1, 2000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xch53"]
+data = PackedVector3Array(-50, 0.5, 1000, 50, 0.5, 1000, -50, -0.5, 1000, 50, 0.5, 1000, 50, -0.5, 1000, -50, -0.5, 1000, 50, 0.5, -1000, -50, 0.5, -1000, 50, -0.5, -1000, -50, 0.5, -1000, -50, -0.5, -1000, 50, -0.5, -1000, 50, 0.5, 1000, 50, 0.5, -1000, 50, -0.5, 1000, 50, 0.5, -1000, 50, -0.5, -1000, 50, -0.5, 1000, -50, 0.5, -1000, -50, 0.5, 1000, -50, -0.5, -1000, -50, 0.5, 1000, -50, -0.5, 1000, -50, -0.5, -1000, 50, 0.5, 1000, -50, 0.5, 1000, 50, 0.5, -1000, -50, 0.5, 1000, -50, 0.5, -1000, 50, 0.5, -1000, -50, -0.5, 1000, 50, -0.5, 1000, -50, -0.5, -1000, 50, -0.5, 1000, 50, -0.5, -1000, -50, -0.5, -1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtxg8"]
+albedo_texture = ExtResource("3_jmcv3")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_najaf"]
+material = SubResource("StandardMaterial3D_rtxg8")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y252r"]
+data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7pbv"]
+albedo_texture = ExtResource("4_5h61w")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_iulm8"]
+material = SubResource("StandardMaterial3D_x7pbv")
+left_to_right = 0.1
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ghhf"]
+data = PackedVector3Array(-0.4, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.4, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.4, 0.5, 0.5, -0.4, 0.5, -0.5, 0.5, -0.5, 0.5, -0.4, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.4, 0.5, -0.5, -0.4, 0.5, 0.5, -0.5, -0.5, -0.5, -0.4, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yexeg"]
+shader = ExtResource("5_wurup")
+shader_parameter/skyTexture = ExtResource("6_n70fe")
+
+[sub_resource type="Sky" id="Sky_wrmfo"]
+sky_material = SubResource("ShaderMaterial_yexeg")
+
+[sub_resource type="Environment" id="Environment_dam86"]
+background_mode = 2
+sky = SubResource("Sky_wrmfo")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.2
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.002
+adjustment_enabled = true
+adjustment_saturation = 1.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dnhn"]
+shader = ExtResource("8_3jipn")
+shader_parameter/inner_radius = 0.35
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 0.5
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_k1x3e"]
+font_size = 70
+
+[node name="Game" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vrtwc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xch53")
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(-1.45074e-06, 0, 7, 0, 1, 0, -33.189, 0, -3.0598e-07, 35, 1, 0)
+mesh = SubResource("PrismMesh_najaf")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y252r")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(-16.5945, 0, 6.06218, 0, 1, 0, -28.7425, 0, -3.5, 22, 1, -72)
+mesh = SubResource("PrismMesh_najaf")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y252r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(33.189, 0, 0, 0, 1, 0, 0, 0, 7, 22, 1, 73)
+mesh = SubResource("PrismMesh_najaf")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y252r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(15.3, 0, 0, 0, 3, 0, 0, 0, 5.1, 0, 2, -36)
+mesh = SubResource("PrismMesh_iulm8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ghhf")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(-6.68784e-07, 0, 5.1, 0, 3, 0, -15.3, 0, -2.22928e-07, 11, 2, 13)
+mesh = SubResource("PrismMesh_iulm8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ghhf")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(-9.53674e-07, 0, -5.1, 0, 3, 0, 15.3, 0, 0, 11, 2, 31)
+mesh = SubResource("PrismMesh_iulm8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ghhf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(-4.76837e-07, 0, 5.1, 0, 3, 0, -15.3, 0, 0, -23, 2, 15)
+mesh = SubResource("PrismMesh_iulm8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ghhf")
+
+[node name="Car" parent="." instance=ExtResource("2_xasnk")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0.847898, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -0.183013, 0.183013, 0.0669873, 0.859789, 0.506236, -0.25, -0.476727, 0.842752, -17, 9, 0)
+light_color = Color(0.909768, 0.815369, 0.744351, 1)
+light_energy = 3.311
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dam86")
+
+[node name="GameUI" type="Node3D" parent="."]
+
+[node name="CustomPostProcessing" type="CanvasLayer" parent="GameUI"]
+
+[node name="Vignette" type="ColorRect" parent="GameUI/CustomPostProcessing"]
+material = SubResource("ShaderMaterial_3dnhn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Canvas2D" type="CanvasLayer" parent="GameUI"]
+script = ExtResource("7_103o6")
+
+[node name="FPSLabel" type="Label" parent="GameUI/Canvas2D"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 66.0
+offset_bottom = 35.0
+text = "FPS: 60"
+
+[node name="Speedometer" type="Label" parent="GameUI/Canvas2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = 2.0
+offset_right = -13.0
+offset_bottom = 98.0
+grow_horizontal = 0
+text = "0 mph"
+label_settings = SubResource("LabelSettings_k1x3e")
+horizontal_alignment = 2
+
+[node name="RPM" type="Label" parent="GameUI/Canvas2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.0
+offset_top = 90.0
+offset_right = -26.0
+offset_bottom = 113.0
+grow_horizontal = 0
+text = "RPM: 0"
+
+[node name="test_val" type="Label" parent="GameUI/Canvas2D"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "test values"

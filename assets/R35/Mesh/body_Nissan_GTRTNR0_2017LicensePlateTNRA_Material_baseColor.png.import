@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://disgaedg71eko"
+path.s3tc="res://.godot/imported/body_Nissan_GTRTNR0_2017LicensePlateTNRA_Material_baseColor.png-597d22faee2567f55f92ea2186a0045b.s3tc.ctex"
+path.etc2="res://.godot/imported/body_Nissan_GTRTNR0_2017LicensePlateTNRA_Material_baseColor.png-597d22faee2567f55f92ea2186a0045b.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2b14db7e11d3683fb5cd96b5e569e234"
+}
+
+[deps]
+
+source_file="res://assets/R35/Mesh/body_Nissan_GTRTNR0_2017LicensePlateTNRA_Material_baseColor.png"
+dest_files=["res://.godot/imported/body_Nissan_GTRTNR0_2017LicensePlateTNRA_Material_baseColor.png-597d22faee2567f55f92ea2186a0045b.s3tc.ctex", "res://.godot/imported/body_Nissan_GTRTNR0_2017LicensePlateTNRA_Material_baseColor.png-597d22faee2567f55f92ea2186a0045b.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

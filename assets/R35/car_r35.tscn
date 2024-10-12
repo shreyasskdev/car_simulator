@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl3lwv1j1b4a3"]
+
+[ext_resource type="Script" path="res://assets/R35/Car.gd" id="1_cancb"]
+[ext_resource type="Script" path="res://assets/R35/CameraPivot.gd" id="2_aev4y"]
+[ext_resource type="PackedScene" uid="uid://cs5ow2wogch8v" path="res://assets/R35/Mesh/body.glb" id="2_jks7p"]
+[ext_resource type="PackedScene" uid="uid://b4vgpli3x003k" path="res://assets/R35/Mesh/wheel.glb" id="3_weo4g"]
+[ext_resource type="AudioStream" uid="uid://drf4llte44032" path="res://assets/R35/audio/highspeed.wav" id="5_ouylg"]
+[ext_resource type="Script" path="res://assets/R35/CarSound.gd" id="6_ikxaj"]
+[ext_resource type="AudioStream" uid="uid://obptequ6xvqq" path="res://assets/R35/audio/idle.wav" id="7_qj2ih"]
+[ext_resource type="AudioStream" uid="uid://cjphyv43uwnwl" path="res://assets/R35/audio/throttle.wav" id="9_igfw7"]
+[ext_resource type="AudioStream" uid="uid://be3gb7b3122g4" path="res://assets/R35/audio/flutter.wav" id="11_imnwt"]
+
+[sub_resource type="Curve" id="Curve_vvbyb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.348416, 0.78022), 0.0, 0.0, 0, 0, Vector2(0.945701, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0631"]
+size = Vector3(2.12207, 1.25012, 4.65137)
+
+[node name="Car" type="VehicleBody3D"]
+mass = 1754.0
+center_of_mass_mode = 1
+script = ExtResource("1_cancb")
+MAX_BRAKE_FORCE = 50.0
+gear_ratios = [2.69, 2.01, 1.59, 1.32, 1.13, 1.0]
+reverse_ratio = -2.5
+final_drive_ratio = 3.38
+power_curve = SubResource("Curve_vvbyb")
+
+[node name="CarBody" parent="." instance=ExtResource("2_jks7p")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999992, 0, 0, 0, 1, 0, 0, 0, 0.999992, 0.0063476, 0.764362, 0.065914)
+shape = SubResource("BoxShape3D_u0631")
+
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.999941, 0.0107161, 0, -0.0107161, 0.999943, 0, 0, 0, 0.999998, -0.85973, 0.4088, 1.43407)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 9.0
+damping_relaxation = 2.0
+
+[node name="wheel" parent="FrontLeftWheel" instance=ExtResource("3_weo4g")]
+skeleton = NodePath("../..")
+
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.99994, 0.0107161, 0, -0.0107161, 0.999943, 0, 0, 0, 0.999998, 0.85757, 0.390649, 1.43407)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 9.0
+damping_relaxation = 2.0
+
+[node name="wheel" parent="FrontRightWheel" instance=ExtResource("3_weo4g")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="BackLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -0.888919, 0.399724, -1.33015)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 9.0
+damping_relaxation = 2.0
+
+[node name="wheel" parent="BackLeftWheel" instance=ExtResource("3_weo4g")]
+skeleton = NodePath("../..")
+
+[node name="BackRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.894517, 0.399724, -1.33015)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+damping_compression = 9.0
+damping_relaxation = 2.0
+
+[node name="wheel" parent="BackRightWheel" instance=ExtResource("3_weo4g")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("2_aev4y")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, 6.30939e-08, -8.76643e-08, 2.02154e-08, 0.906632, 0.421922, 1.061e-07, 0.421922, -0.906632, 0, 2.18246, -3.55276)
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("6_ikxaj")
+
+[node name="EngineLoop" type="AudioStreamPlayer3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5458, -0.957989)
+stream = ExtResource("5_ouylg")
+
+[node name="IdleSound" type="AudioStreamPlayer3D" parent="Node3D"]
+stream = ExtResource("7_qj2ih")
+volume_db = 0.5
+max_db = 6.0
+
+[node name="turboCharger" type="AudioStreamPlayer3D" parent="Node3D"]
+stream = ExtResource("11_imnwt")
+
+[node name="Throttle" type="AudioStreamPlayer3D" parent="Node3D"]
+stream = ExtResource("9_igfw7")
